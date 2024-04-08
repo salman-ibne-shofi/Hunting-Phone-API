@@ -7,6 +7,8 @@ const loadPhone = async (searchText, isShowAll) => {
 	console.log(phones);
 	displayPhones(phones, isShowAll);
 };
+
+
 const displayPhones = (phones, isShowAll) => {
 	console.log(phones);
 
@@ -17,7 +19,7 @@ const displayPhones = (phones, isShowAll) => {
 	// display show all button if there are more than 12 phones
 	const showAllContainer = document.getElementById("show-all-container");
 	if (phones.length > 12 && !isShowAll) {
-		showAllContainer.classList("hidden");
+		showAllContainer.classList.remove("hidden");
 	} else {
 		showAllContainer.classList.add("hidden");
 	}
@@ -40,8 +42,8 @@ const displayPhones = (phones, isShowAll) => {
             <p>
                 If a dog chews shoes whose shoes does he choose?
             </p>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary">Buy Now</button>
+            <div class="card-actions justify-center">
+                <button onclick="handleShowDetail('${phone.slug}')" class="btn btn-primary">Show Details</button>
             </div>
         </div>
 		</div>`;
@@ -52,6 +54,15 @@ const displayPhones = (phones, isShowAll) => {
 	// hide loading spinner
 	toggleLoadingSpinner(false);
 };
+
+// 
+const handleShowDetail = async(id) => {
+    console.log('clicked show details', id);
+    // load single phone data
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/apple_iphone_13-11103`, {id});
+    const data = await res.json();
+    console.log(data);
+}
 
 // handle search button
 const handleSearch = (isShowAll) => {

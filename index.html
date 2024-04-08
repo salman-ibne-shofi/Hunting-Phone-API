@@ -50,10 +50,32 @@
 					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
 				></div>
 				<!-- show all button -->
-				<div id="show-all-container" class="hidden text-center">
-					<button onclick="handleShowAll()" class="btn btn-accent">Show All</button>
+				<div id="show-all-container" class="hidden text-center my-8">
+					<button onclick="handleShowAll()" class="btn btn-accent">
+						Show All
+					</button>
 				</div>
 			</section>
+
+			<!-- show details modal -->
+			<!-- Open the modal using ID.showModal() method -->
+			<button class="btn" onclick="show_details_modal.showModal()">
+				open modal
+			</button>
+			<dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+				<div class="modal-box">
+					<h3 class="font-bold text-lg">Hello!</h3>
+					<p class="py-4">
+						Press ESC key or click the button below to close
+					</p>
+					<div class="modal-action">
+						<form method="dialog">
+							<!-- if there is a button in form, it will close the modal -->
+							<button class="btn">Close</button>
+						</form>
+					</div>
+				</div>
+			</dialog>
 		</main>
 		<footer></footer>
 		<script src="./js/phone.js"></script>
